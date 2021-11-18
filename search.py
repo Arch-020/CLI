@@ -17,8 +17,9 @@ def get_book_title(name):
     '''
     Gets the book title
     '''
+    name = name.replace(" ", "+")
     result = requests.get(
-        'http://openlibrary.org/search.json?q=the+lord+of+the+rings')
+        f"http://openlibrary.org/search.json?q={name}")
 
     result_dict = result.json()
     click.echo(f"Title: {result_dict['docs'][0]['title']}")
